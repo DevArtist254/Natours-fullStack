@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon server.js",
+    "client": "cd client && yarn start",
     "start:pro": "NODE_ENV=production nodemon server.js",
     "delDB": "node ./dev-data/data/import-data.js --delete",
     "importNewDB": "node ./dev-data/data/import-data.js --import",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "dev": "concurrently --kill-others-on-fail  \"npm run start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,9 @@
   },
   "homepage": "https://github.com/DevArtist254/natours#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.0.0",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.1.0",

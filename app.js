@@ -1,47 +1,52 @@
 const express = require('express');
 
-//Security middleware 
-const rateLimit = require("express-rate-limit");
-const helmet = require("helmet")
-const mongoSanitize = require("express-mongo-sanitize")
-const xss = require("xss-clean")
-const hpp = require("hpp")
+//Security middleware
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
 
 //Routes init
 const toursRoute = require('./routes/tourRoutes');
 const usersRoute = require('./routes/userRoutes');
-const reviewsRoute = require('./routes/reviewRoutes')
-const ErrorHandler = require("./utils/errorApp")
-const errorController = require("./controller/errorController")
+const reviewsRoute = require('./routes/reviewRoutes');
+const ErrorHandler = require('./utils/errorApp');
+const errorController = require('./controller/errorController');
 
 const app = express();
 
+app.use(cors());
+
 //secure http requests
-app.use(helmet())
+app.use(helmet());
 
 //rateLimit check on amount of requests allowed on a single IP *adapt it to our own app
 const limiter = rateLimit({
-  max : 100,
-  windowMs : 60 * 60 * 1000,
-  message: 'Too many requests from this IP, please try again in an hour!'
-})
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try again in an hour!',
+});
 
 //middle on the api route
-app.use("/api", limiter)
+app.use('/api', limiter);
 
 //Data sanitization against NoSQL query injection {"email": { $gt : ""}}
-app.use(mongoSanitize())
+app.use(mongoSanitize());
 
 //Data sanitization against XSS HTML prevention
-app.use(xss())
+app.use(xss());
 
 //Prevent parameter pollution then whitelist the data you to be doubled
-app.use(hpp({
-  whitelist : ["duration","price","maxGroupSize"]
-}))
+app.use(
+  hpp({
+    whitelist: ['duration', 'price', 'maxGroupSize'],
+  })
+);
 
 //place a middleware to interspect
-app.use(express.json({limit : '10kb'}));
+app.use(express.json({ limit: '10kb' }));
 app.use(express.static(`${__dirname}/public/overview.html`));
 
 app.use((req, res, next) => {
@@ -53,10 +58,10 @@ app.use((req, res, next) => {
 //Route management
 app.use('/natours/v1/tours', toursRoute);
 app.use('/natours/v1/users', usersRoute);
-app.use('/natours/v1/reviews',reviewsRoute);
+app.use('/natours/v1/reviews', reviewsRoute);
 
 //error handling for wrong routes
-app.all("*", (req,res,next) =>{
+app.all('*', (req, res, next) => {
   //NORMAL WAY
   // res.status(404).json({
   //   status: "fail",
@@ -70,10 +75,10 @@ app.all("*", (req,res,next) =>{
 
   //next(err)
 
-  next(new ErrorHandler(`${req.originalUrl} url is not found`, 404))
-})
+  next(new ErrorHandler(`${req.originalUrl} url is not found`, 404));
+});
 
 //Error handling for middleware in the gobal variable
-app.use(errorController)
+app.use(errorController);
 
 module.exports = app;
