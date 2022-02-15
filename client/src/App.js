@@ -18,8 +18,6 @@ const OverviewWithSpinner = Spinner(Overview);
 
 function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
   useEffect(() => {
-    const token = process.env.mapAccessToken;
-    console.log(token);
     loadItems();
     loadCurrentUser(token);
   }, []);

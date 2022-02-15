@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router-dom';
 import Logo from './../img/logo-white.png';
 import user from './../img/users/default.jpg';
 
 function Nav({ currentUser }) {
+  const navRoute = useNavigate();
+
   return (
     <header className="header">
       <nav className="nav">
@@ -29,10 +32,21 @@ function Nav({ currentUser }) {
             My bookings
           </Link>
           {currentUser ? (
-            <Link to="/me" className="nav__el">
-              <img src={user} alt="Me" className="nav__user-img" />
-              <span>{currentUser.fullName}</span>
-            </Link>
+            <div style={{ display: 'flex' }}>
+              <Link to="/me" className="nav__el">
+                <img src={user} alt="Me" className="nav__user-img" />
+                <span>{currentUser.fullName}</span>
+              </Link>
+              <span
+                onClick={() => {
+                  localStorage.clear();
+                  navRoute('/');
+                }}
+                className="nav__el nav__el--cta"
+              >
+                Sign Out
+              </span>
+            </div>
           ) : (
             <div>
               <Link to="/login" className="nav__el">
