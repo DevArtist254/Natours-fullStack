@@ -1,9 +1,8 @@
-function CurrentUser() {
-  return (
-    <div>
-      <h1>User details</h1>
-    </div>
-  );
-}
+import React from 'react';
+import UpLoadImg from './../components/upLoadImg';
+
+const CurrentUser = () => {
+  return <UpLoadImg />;
+};
 
 export default CurrentUser;
