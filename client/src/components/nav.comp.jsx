@@ -34,7 +34,11 @@ function Nav({ currentUser }) {
           {currentUser ? (
             <div style={{ display: 'flex' }}>
               <Link to="/me" className="nav__el">
-                <img src={user} alt="Me" className="nav__user-img" />
+                <img
+                  src={currentUser.photo}
+                  alt="Me"
+                  className="nav__user-img"
+                />
                 <span>{currentUser.fullName}</span>
               </Link>
               <span
