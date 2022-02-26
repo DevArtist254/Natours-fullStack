@@ -20,7 +20,7 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
   useEffect(() => {
     loadItems();
     loadCurrentUser(token);
-  }, []);
+  }, [loadItems, loadCurrentUser, token]);
 
   return (
     <div>
