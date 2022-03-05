@@ -1,7 +1,9 @@
+import Maps from '../components/mapbox.comp';
+
 function Bookings() {
   return (
     <div>
-      <h1>Bookings</h1>
+      <Maps />
     </div>
   );
 }
