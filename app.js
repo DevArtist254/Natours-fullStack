@@ -9,7 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
 
-const publicPath = path.join(__dirname, 'client/build/index.html');
+const publicPath = path.join(__dirname, 'client/build');
 
 //Routes init
 const toursRoute = require('./routes/tourRoutes');
@@ -51,6 +51,10 @@ app.use(
 //place a middleware to interspect
 app.use(express.json({ limit: '10kb' }));
 app.use(express.static(publicPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 app.use((req, res, next) => {
   console.log('Hello world');
