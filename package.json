@@ -4,7 +4,7 @@
   "description": "backend mastery",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon server.js",
+    "start": "NODE_ENV=development node server.js",
     "client": "cd client && yarn start",
     "start:pro": "NODE_ENV=production nodemon server.js",
     "delDB": "node ./dev-data/data/import-data.js --delete",
