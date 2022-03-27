@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 //Security middleware
 const rateLimit = require('express-rate-limit');
@@ -7,6 +8,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
+
+const publicPath = path.join(__dirname, 'client/build');
 
 //Routes init
 const toursRoute = require('./routes/tourRoutes');
@@ -47,7 +50,7 @@ app.use(
 
 //place a middleware to interspect
 app.use(express.json({ limit: '10kb' }));
-app.use(express.static(`${__dirname}/public/overview.html`));
+app.use(express.static(publicPath));
 
 app.use((req, res, next) => {
   console.log('Hello world');
