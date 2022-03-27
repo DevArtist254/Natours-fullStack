@@ -9,7 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
 
-const publicPath = path.join(__dirname, 'client/build');
+const publicPath = path.join(__dirname, '..', 'client/build');
 
 //Routes init
 const toursRoute = require('./routes/tourRoutes');
