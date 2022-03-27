@@ -52,10 +52,6 @@ app.use(
 app.use(express.json({ limit: '10kb' }));
 app.use(express.static(publicPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
-
 app.use((req, res, next) => {
   console.log('Hello world');
   req.timeStamp = new Date().toISOString();
@@ -87,5 +83,9 @@ app.all('*', (req, res, next) => {
 
 //Error handling for middleware in the gobal variable
 app.use(errorController);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 module.exports = app;
