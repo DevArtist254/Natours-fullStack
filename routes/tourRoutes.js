@@ -30,14 +30,9 @@ router.get('/get-Averages', getStatsAvgs);
 router.get('/get-tour-five-tours', getTourFiveTours, getAllTours);
 router.get('/get-holiday-stats', getHolidayStats);
 //Chaining middleware
-router.post('/', createATour);
+router.post('/', protect, restrictTo('lead-guide'), createATour);
 router.get('/:id', getATour);
 router.patch('/:id', protect, findAndUpdate);
-router.delete(
-  '/:id',
-  protect,
-  restrictTo('admin', 'lead-guide'),
-  findAndDelete
-);
+router.delete('/:id', protect, restrictTo('admin'), findAndDelete);
 
 module.exports = router;

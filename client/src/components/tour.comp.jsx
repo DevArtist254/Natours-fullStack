@@ -1,169 +1,263 @@
 import { connect } from 'react-redux';
-import { Icon } from '@iconify/react';
+//import { Icon } from '@iconify/react';
 import LeadGuide from './../img/users/user-19.jpg';
 import TourGuide from './../img/users/user-18.jpg';
 import Intern from './../img/users/user-17.jpg';
-import Logo from './../img/logo-white.png';
+// import Logo from './../img/logo-white.png';
 import formatDate from './../utils/formatDate';
 
 function Tour({ data }) {
   return (
-    <div>
-      <section
-        className="section-header"
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(125, 213, 111, 0.3), rgba(40, 180, 136, 0.6)),url(${data.imageCover})`,
-        }}
+    <main className="tour">
+      <div
+        className="tour__intro"
+        style={{ backgroundImage: `url(${data.imageCover})` }}
       >
-        <div className="heading-box">
-          <h1 className="heading-primary">
-            <span>{data.name}</span>
-          </h1>
-          <div className="heading-box__group">
-            <div className="heading-box__detail">
-              <Icon
-                icon="fluent:calendar-clock-16-filled"
-                className="heading-box__icon"
-              />
-              <span className="heading-box__text">{data.duration} days</span>
-            </div>
-            <div className="heading-box__detail">
-              <Icon
-                icon="emojione-monotone:world-map"
-                className="heading-box__icon"
-              />
-              <span className="heading-box__text">
-                {data.startLocation.description}
-              </span>
-            </div>
+        <div className="tour__intro--bdg">
+          <div className="tour__intro--about">
+            <h3 className="tour__intro--terHeader">About</h3>
+            <p className="tour__intro--decription">{data.description}</p>
           </div>
         </div>
-      </section>
+        <div className="tour__intro--footer">
+          <h4 className="tour__intro--footerTerHeader">
+            {data.duration}
+            <strong>days</strong>
+          </h4>
+          <h2 className="tour__intro--footerSubHeader">
+            <strong>Difficulty</strong> : {data.difficulty}
+          </h2>
+          <h1 className="tour__intro--footerHeader">{data.name}</h1>
+        </div>
+      </div>
 
-      <section className="section-description">
-        <div className="overview-box">
-          <div>
-            <div className="overview-box__group">
-              <h2 className="heading-secondary ma-bt-lg">Quick facts</h2>
-              <div className="overview-box__detail">
-                <Icon
-                  icon="emojione-monotone:world-map"
-                  className="overview-box__icon"
-                />
-                <span className="overview-box__label">Next date</span>
-                <span className="overview-box__text">
+      <div className="tour__booked">
+        <div className="tour__booked--bookings">
+          <h2 className="tour__booked--header">Bookings</h2>
+          <div className="tour__booked--content">
+            <div className="tour__booked--list">
+              <h3 className="tour__booked--subHeader">Dates</h3>
+              <ul className="tour__booked--unlist">
+                <li className="tour__booked--items">
                   {formatDate(data.startDates[0])}
-                </span>
-              </div>
-              <div className="overview-box__detail">
-                <Icon
-                  icon="fluent:arrow-trending-checkmark-20-filled"
-                  className="overview-box__icon"
-                />
-                <span className="overview-box__label">Difficulty</span>
-                <span className="overview-box__text">{data.difficulty}</span>
-              </div>
-              <div className="overview-box__detail">
-                <Icon icon="gls:map-users" className="overview-box__icon" />
-                <span className="overview-box__label">Participants</span>
-                <span className="overview-box__text">
-                  {data.maxGroupSize} people
-                </span>
-              </div>
-              <div className="overview-box__detail">
-                <Icon
-                  icon="fluent:star-12-filled"
-                  className="overview-box__icon"
-                />
-                <span className="overview-box__label">Rating</span>
-                <span className="overview-box__text">
-                  {data.ratingsAverage} / 5
-                </span>
-              </div>
+                </li>
+                <li className="tour__booked--items">
+                  {formatDate(data.startDates[0])}
+                </li>
+                <li className="tour__booked--items">
+                  {formatDate(data.startDates[0])}
+                </li>
+              </ul>
             </div>
-
-            <div className="overview-box__group">
-              <h2 className="heading-secondary ma-bt-lg">Your tour guides</h2>
-
-              <div className="overview-box__detail">
-                <img
-                  src={LeadGuide}
-                  alt="Lead guide"
-                  className="overview-box__img"
-                />
-                <span className="overview-box__label">Lead guide</span>
-                <span className="overview-box__text">Steven Miller</span>
-              </div>
-              <div className="overview-box__detail">
-                <img
-                  src={TourGuide}
-                  alt="Tour guide"
-                  className="overview-box__img"
-                />
-                <span className="overview-box__label">Tour guide</span>
-                <span className="overview-box__text">Lisa Brown</span>
-              </div>
-              <div className="overview-box__detail">
-                <img src={Intern} alt="Intern" className="overview-box__img" />
-                <span className="overview-box__label">Intern</span>
-                <span className="overview-box__text">Max Smith</span>
-              </div>
+            <div className="tour__booked--list">
+              <h3 className="tour__booked--subHeader">Participants</h3>
+              <ul className="tour__booked--unlist">
+                <li className="tour__booked--items">2 / {data.maxGroupSize}</li>
+                <li className="tour__booked--items">5 / {data.maxGroupSize}</li>
+                <li className="tour__booked--items">4 / {data.maxGroupSize}</li>
+              </ul>
+            </div>
+          </div>
+          <button className="pri-btn">Add to cart : $200</button>
+        </div>
+        <div className="tour__booked--guides">
+          <h2 className="tour__booked--header">Your Tour Guides</h2>
+          <div className="tour__booked--guider">
+            <div className="tour__booked--user">
+              <img
+                src={LeadGuide}
+                alt="Profile"
+                className="tour__booked--image"
+              />
+              <h3 className="tour__booked--profile">Guide 1</h3>
+            </div>
+            <div className="tour__booked--user">
+              <img
+                src={TourGuide}
+                alt="Profile"
+                className="tour__booked--image"
+              />
+              <h3 className="tour__booked--profile">Guide 1</h3>
+            </div>
+            <div className="tour__booked--user">
+              <img src={Intern} alt="Profile" className="tour__booked--image" />
+              <h3 className="tour__booked--profile">Guide 1</h3>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="description-box">
-          <h2 className="heading-secondary ma-bt-lg">About the {data.name}</h2>
-          <p className="description__text">{data.summary}</p>
-          <p className="description__text">{data.description}</p>
-        </div>
-      </section>
-
-      <section className="section-pictures">
-        <div className="picture-box">
+      <div className="tour__location">
+        <div className="tour__location--map">
           <img
-            className="picture-box__img picture-box__img--1"
-            src={data.images[0]}
-            alt="The Park Camper Tour 1"
+            src="./images/maps.jpg"
+            alt="google maps"
+            className="tour__location--maped"
           />
         </div>
-        <div className="picture-box">
-          <img
-            className="picture-box__img picture-box__img--2"
-            src={data.images[1]}
-            alt="The Park Camper Tour 1"
-          />
-        </div>
-        <div className="picture-box">
-          <img
-            className="picture-box__img picture-box__img--3"
-            src={data.images[2]}
-            alt="The Park Camper Tour 1"
-          />
-        </div>
-      </section>
+        <h1 className="tour__location--header">Fanbase</h1>
+      </div>
 
-      <section className="section-cta">
-        <div className="cta">
-          <div className="cta__img cta__img--logo">
-            <img src={Logo} alt="Natours logo" className="" />
+      <div className="tour__memories">
+        <h1 className="tour__memories--header">Memories</h1>
+
+        <div className="tour__memories--images">
+          <span
+            className="iconify tour__memories--arrow"
+            data-icon="bx:left-arrow"
+            style={{ color: 'black', fontSize: '14.6rem' }}
+          ></span>
+          <img src={data.images} alt="tour" />
+          <span
+            className="iconify iconify tour__memories--arrow"
+            data-icon="bx:right-arrow"
+            style={{ color: 'black', fontSize: '14.6rem' }}
+          ></span>
+        </div>
+      </div>
+
+      <div className="tour__share">
+        <h1 className="tour__share--header">Share your experinces</h1>
+        <div className="tour__share--btn">
+          <button className="pri-btn">Upload Images</button>
+          <button className="pri-btn">Reviews</button>
+        </div>
+      </div>
+
+      <div className="tour__reviews">
+        <div className="tour__reviews--header">Reviews</div>
+
+        <div className="tour__reviews--main">
+          <div className="tour__reviews--content">
+            <img
+              src="./images/user-91.jpg"
+              alt="user"
+              className="tour__reviews--image"
+            />
+            <div className="tour__reviews--text">
+              <h2 className="tour__reviews--subHeader">
+                {data.reviews[0].createdBy.fullName}
+              </h2>
+              <p className="tour__reviews--message">
+                {data.reviews[0].reviews}
+              </p>
+              {/* <div className="tour__reviews--stars">
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style={{color: "black", fontSize: "14.6rem"}}
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+              </div> */}
+            </div>
           </div>
-          <img src={data.images[2]} alt="" className="cta__img cta__img--1" />
-          <img src={data.images[1]} alt="" className="cta__img cta__img--2" />
-
-          <div className="cta__content">
-            <h2 className="heading-secondary">What are you waiting for?</h2>
-            <p className="cta__text">
-              {data.duration} days. 1 adventure. Infinite memories. Make it
-              yours today!
-            </p>
-            <button className="btn btn--green span-all-rows">
-              Book tour now!
-            </button>
+          <div className="tour__reviews--content">
+            <img
+              src="./images/user-91.jpg"
+              alt="user"
+              className="tour__reviews--image"
+            />
+            <div className="tour__reviews--text">
+              <h2 className="tour__reviews--subHeader">
+                {data.reviews[1].createdBy.fullName}
+              </h2>
+              <p className="tour__reviews--message">
+                {data.reviews[1].reviews}
+              </p>
+              {/* <div className="tour__reviews--stars">
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+              </div> */}
+            </div>
+          </div>
+          <div className="tour__reviews--content">
+            <img
+              src="./images/user-91.jpg"
+              alt="user"
+              className="tour__reviews--image"
+            />
+            <div className="tour__reviews--text">
+              <h2 className="tour__reviews--subHeader">User Name</h2>
+              <p className="tour__reviews--message">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                aliquam temporibus labore veniam suscipit ipsam eveniet quod
+                illo, blanditiis deserunt voluptatibus molestias dicta quia
+                repellendus voluptate unde omnis ullam similique.
+              </p>
+              {/* <div className="tour__reviews--stars">
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="bxs:star"
+                  style="color: #ffd365; font-size: 3rem;"
+                ></span>
+              </div> */}
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </main>
   );
 }
 

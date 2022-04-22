@@ -13,6 +13,7 @@ import Signup from './pages/signup.pg';
 import './App.css';
 import Google from './pages/google.pg';
 import Tour from './components/tour.comp';
+import LandingPG from './pages/landing.pg';
 
 const OverviewWithSpinner = Spinner(Overview);
 
@@ -26,8 +27,9 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
     <div>
       <Nav />
       <Routes>
+        <Route path="/" element={<LandingPG />} />
         <Route
-          path="/"
+          path="/overview"
           element={<OverviewWithSpinner isloading={isloading} cards={tours} />}
         />
         <Route path="/tour" element={<Tour />} />

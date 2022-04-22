@@ -3,9 +3,9 @@ import Cards from '../components/cards.comp';
 
 function Overview({ cards, setTour }) {
   return (
-    <div className="main">
+    <main>
       <Cards cards={cards} setTour={setTour} />
-    </div>
+    </main>
   );
 }
 

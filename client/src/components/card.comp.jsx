@@ -1,72 +1,50 @@
 import { connect } from 'react-redux';
 import { loadTour } from './../redux/tour/tour.actions';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from '@iconify/react';
-import formatDate from './../utils/formatDate';
+//import { Icon } from '@iconify/react';
+//import formatDate from './../utils/formatDate';
+import { Link } from 'react-router-dom';
+import Stars from './star.comp';
 
 function Card({ data, loadTour }) {
   const navigate = useNavigate();
 
+  const navTours = async (id) => {
+    await loadTour(id);
+
+    navigate('/tour');
+  };
+
   return (
-    <div className="card">
-      <div className="card__header">
-        <div className="card__picture">
-          <div className="card__picture-overlay">&nbsp;</div>
-          <img
-            src={data.imageCover}
-            alt="Tour 1"
-            className="card__picture-img"
-          />
-        </div>
-
-        <h3 className="heading-tertirary">
-          <span>{data.name}</span>
-        </h3>
-      </div>
-
-      <div className="card__details">
-        <h4 className="card__sub-heading">
-          {data.difficulty}-difficult {data.duration}-day tour
-        </h4>
-        <p className="card__text">{data.summary}</p>
-        <div className="card__data">
-          <Icon icon="emojione-monotone:world-map" className="card__icon" />
-          <span>{data.startLocation.description}</span>
-        </div>
-        <div className="card__data">
-          <Icon icon="bx:bx-calender" className="card__icon" />
-          <span>{formatDate(data.startDates[0])}</span>
-        </div>
-        <div className="card__data">
-          <Icon icon="bi:flag-fill" className="card__icon" />
-          <span>{data.locations.length}-stops</span>
-        </div>
-        <div className="card__data">
-          <Icon icon="gls:map-users" className="card__icon" />
-          <span>{data.maxGroupSize}-people</span>
-        </div>
-      </div>
-
-      <div className="card__footer">
-        <p>
-          <span className="card__footer-value">${data.price}</span>
-          <span className="card__footer-text">per person</span>
-        </p>
-        <p className="card__ratings">
-          <span className="card__footer-value">{data.ratingsAverage}</span>
-          <span className="card__footer-text">
-            rating ({data.ratingsQuantity})
-          </span>
-        </p>
-        <div
-          onClick={async () => {
-            await loadTour(`${data._id}`);
-            navigate('/tour');
+    <div className="card-full">
+      <div
+        className="card-full__picture"
+        style={{
+          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${data.imageCover})`,
+        }}
+      >
+        <h3
+          className="card-full__header card-header"
+          style={{
+            backgroundImage: `linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url(${data.imageCover})`,
           }}
-          className="btn btn--green btn--small"
         >
-          Details
+          {data.name}
+        </h3>
+        <div className="card-full__picture--sub-header">
+          <h4 className="card-full__subHeader card-subHeader">{data.name}</h4>
+          <div className="stars">
+            <Stars rateAv={data.ratingsAverage} />
+          </div>
         </div>
+      </div>
+      <div className="card-full__link">
+        <p onClick={() => navTours(data.id)} className="link-sec">
+          Details
+        </p>
+        <Link to="/" className="link-sec">
+          Memories
+        </Link>
       </div>
     </div>
   );
