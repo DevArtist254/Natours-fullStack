@@ -799,7 +799,8 @@ html {
       /* identical to box height */
       color: #000000; }
     .tour__location--map {
-      clip-path: polygon(0 20%, 100% 0, 100% 80%, 0% 100%); }
+      clip-path: polygon(0 20%, 100% 0, 100% 80%, 0% 100%);
+      height: 1000px; }
     .tour__location--maped {
       width: 100%;
       height: 100%; }

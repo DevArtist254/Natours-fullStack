@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
+import MapWrapped from './location.comp';
 //import { Icon } from '@iconify/react';
 import LeadGuide from './../img/users/user-19.jpg';
 import TourGuide from './../img/users/user-18.jpg';
 import Intern from './../img/users/user-17.jpg';
 // import Logo from './../img/logo-white.png';
 import formatDate from './../utils/formatDate';
+import { Reviews } from './reviews.comp';
 
 function Tour({ data }) {
   return (
@@ -89,13 +91,19 @@ function Tour({ data }) {
 
       <div className="tour__location">
         <div className="tour__location--map">
-          <img
-            src="./images/maps.jpg"
-            alt="google maps"
-            className="tour__location--maped"
+          <MapWrapped
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            latitude={data.startLocation.coordinates[1]}
+            longitude={data.startLocation.coordinates[0]}
+            locations={data.locations}
           />
         </div>
-        <h1 className="tour__location--header">Fanbase</h1>
+        <h1 className="tour__location--header">
+          {data.startLocation.description}
+        </h1>
       </div>
 
       <div className="tour__memories">
@@ -126,136 +134,8 @@ function Tour({ data }) {
 
       <div className="tour__reviews">
         <div className="tour__reviews--header">Reviews</div>
-
-        <div className="tour__reviews--main">
-          <div className="tour__reviews--content">
-            <img
-              src="./images/user-91.jpg"
-              alt="user"
-              className="tour__reviews--image"
-            />
-            <div className="tour__reviews--text">
-              <h2 className="tour__reviews--subHeader">
-                {data.reviews[0].createdBy.fullName}
-              </h2>
-              <p className="tour__reviews--message">
-                {data.reviews[0].reviews}
-              </p>
-              {/* <div className="tour__reviews--stars">
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style={{color: "black", fontSize: "14.6rem"}}
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-              </div> */}
-            </div>
-          </div>
-          <div className="tour__reviews--content">
-            <img
-              src="./images/user-91.jpg"
-              alt="user"
-              className="tour__reviews--image"
-            />
-            <div className="tour__reviews--text">
-              <h2 className="tour__reviews--subHeader">
-                {data.reviews[1].createdBy.fullName}
-              </h2>
-              <p className="tour__reviews--message">
-                {data.reviews[1].reviews}
-              </p>
-              {/* <div className="tour__reviews--stars">
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-              </div> */}
-            </div>
-          </div>
-          <div className="tour__reviews--content">
-            <img
-              src="./images/user-91.jpg"
-              alt="user"
-              className="tour__reviews--image"
-            />
-            <div className="tour__reviews--text">
-              <h2 className="tour__reviews--subHeader">User Name</h2>
-              <p className="tour__reviews--message">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-                aliquam temporibus labore veniam suscipit ipsam eveniet quod
-                illo, blanditiis deserunt voluptatibus molestias dicta quia
-                repellendus voluptate unde omnis ullam similique.
-              </p>
-              {/* <div className="tour__reviews--stars">
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-                <span
-                  className="iconify"
-                  data-icon="bxs:star"
-                  style="color: #ffd365; font-size: 3rem;"
-                ></span>
-              </div> */}
-            </div>
-          </div>
-        </div>
+        {data.reviews &&
+          data.reviews.map((review) => <Reviews review={review} />)}
       </div>
     </main>
   );
