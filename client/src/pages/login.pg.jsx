@@ -29,7 +29,7 @@ function Login({ loadAuthUser }) {
   }
 
   return (
-    <main className="main">
+    <main className="main-form">
       <div className="login-form">
         <h2 className="heading-secondary ma-bt-lg">Log on to your account!</h2>
         <form className="form form--signup" onSubmit={onSubmit}>

@@ -21,9 +21,14 @@ const UpLoadImg = () => {
   };
 
   return (
-    <div>
+    <div className="center">
       <form>
-        <input type="file" onChange={fileUploader} />
+        <input
+          type="file"
+          onChange={fileUploader}
+          placeholder="upload profile"
+          style={{ width: '88px' }}
+        />
         <div>
           {error && <div>{error}</div>}
           {files && <div>{files.name}</div>}

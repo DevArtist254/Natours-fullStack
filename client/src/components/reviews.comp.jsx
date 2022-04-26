@@ -6,7 +6,7 @@ export const Reviews = ({ review }) => {
     <div key={review._id} className="tour__reviews--main">
       <div className="tour__reviews--content">
         <img
-          src="./images/user-91.jpg"
+          src={review.createdBy.photo}
           alt="user"
           className="tour__reviews--image"
         />

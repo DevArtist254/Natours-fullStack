@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import triangle from './../img/triangle.svg';
 import wishlist from './../img/wishlist.svg';
 import x from './../img/x.png';
+import UpLoadImg from './upLoadImg';
 
 function Nav({ currentUser }) {
   const navRoute = useNavigate();
@@ -24,9 +25,9 @@ function Nav({ currentUser }) {
           </span>
           <img src={triangle} alt="tri" className="triangle" />
           <div className="dropdown">
-            <h2 className="dropdown__header">Filters</h2>
+            <h2 className="dropdown__header mt2">Filters</h2>
 
-            <div className="dropdown__diff">
+            <div className="dropdown__diff mt2">
               <div className="dropdown__diff--input">
                 <input type="checkbox" />
                 <h3 className="dropdown__diff--header">Difficulty</h3>
@@ -41,7 +42,7 @@ function Nav({ currentUser }) {
               </div>
             </div>
 
-            <div className="dropdown__range">
+            <div className="dropdown__range mt2">
               <h3 className="dropdown__range--header">Range</h3>
 
               <div className="dropdown__range--inputs">
@@ -51,7 +52,7 @@ function Nav({ currentUser }) {
               </div>
             </div>
 
-            <div className="dropdown__location">
+            <div className="dropdown__location mt2">
               <span
                 className="iconify"
                 icon="entypo:location"
@@ -60,27 +61,66 @@ function Nav({ currentUser }) {
               <p className="dropdown__location--header">Close to me</p>
             </div>
 
-            <div className="dropdown__cta">Submit</div>
+            <div className="dropdown__cta mt2">Submit</div>
           </div>
         </li>
         <li className="nav__items">
-          <Link to="/user" className="nav__link">
-            <Icon
-              className="iconify"
-              icon="healthicons:ui-user-profile"
-              style={{ color: '#000', fontSize: '3.5rem' }}
-            />
-          </Link>
-          <img src={triangle} alt="tri" className="triangle-1" />
-          <div className="dropdown">
-            <h2 className="dropdown__header">User Profile</h2>
-            <h3 className="dropdown__header--sub">Name</h3>
-            <h3 className="dropdown__p">Kevin Wasonga</h3>
-            <h3 className="dropdown__header--sub">Email</h3>
-            <h3 className="dropdown__p">Jackwest@gmail.com</h3>
-            <div className="dropdown__cta btn-plus">Upload image</div>
-            <div className="dropdown__cta">Submit</div>
-          </div>
+          {!currentUser ? (
+            <>
+              <Link to="/user" className="nav__link">
+                <Icon
+                  className="iconify"
+                  icon="healthicons:ui-user-profile"
+                  style={{ color: '#000', fontSize: '3.5rem' }}
+                />
+              </Link>
+              <img src={triangle} alt="tri" className="triangle-1" />
+              <div className="dropdown">
+                <div
+                  className="dropdown__cta mt2"
+                  onClick={() => navRoute('/login')}
+                >
+                  Login
+                </div>
+                <div
+                  className="dropdown__cta mt2"
+                  onClick={() => navRoute('/signup')}
+                >
+                  Sign up
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/user" className="nav__link">
+                {!currentUser.photo ? (
+                  <Icon
+                    className="iconify"
+                    icon="healthicons:ui-user-profile"
+                    style={{ color: '#000', fontSize: '3.5rem' }}
+                  />
+                ) : (
+                  <img
+                    src={currentUser.photo}
+                    alt="profile"
+                    style={{ width: '35px' }}
+                  />
+                )}
+              </Link>
+              <img src={triangle} alt="tri" className="triangle-1" />
+              <div className="dropdown">
+                <h2 className="dropdown__header mt2">User Profile</h2>
+                <h3 className="dropdown__header--sub mt2">Name</h3>
+                <h3 className="dropdown__p">{currentUser.fullName}</h3>
+                <h3 className="dropdown__header--sub mt2">Email</h3>
+                <h3 className="dropdown__p">{currentUser.email}</h3>
+                <h3 className="dropdown__header--sub mt2">Upload your image</h3>
+                <UpLoadImg />
+                {/* <div className="">Upload image</div> */}
+                <div className="dropdown__cta mt2">Sign Out</div>
+              </div>
+            </>
+          )}
         </li>
         <li className="nav__items">
           <a href="/nav.html" className="nav__link">

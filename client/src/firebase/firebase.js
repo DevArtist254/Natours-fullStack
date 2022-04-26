@@ -8,12 +8,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_REACT_APP_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_PROJECTID,
-  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-  appId: process.env.REACT_APP_APPID,
+  apiKey: 'AIzaSyBDvqGaFIdywqZcIabp4SihpaA6LfHWrJ8',
+  authDomain: 'natours-254.firebaseapp.com',
+  projectId: 'natours-254',
+  storageBucket: 'natours-254.appspot.com',
+  messagingSenderId: 505542981170,
+  appId: '1:505542981170:web:e3c4a3dba073dafb202e2b',
 };
 
 const firebase = initializeApp(firebaseConfig);

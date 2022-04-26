@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { loadTour } from './../redux/tour/tour.actions';
 import { useNavigate } from 'react-router-dom';
+//import { useMemo } from 'react';
 //import { Icon } from '@iconify/react';
 //import formatDate from './../utils/formatDate';
 import { Link } from 'react-router-dom';
@@ -9,8 +10,8 @@ import Stars from './star.comp';
 function Card({ data, loadTour }) {
   const navigate = useNavigate();
 
-  const navTours = async (id) => {
-    await loadTour(id);
+  const navTours = (id) => {
+    loadTour(id);
 
     navigate('/tour');
   };
@@ -39,7 +40,7 @@ function Card({ data, loadTour }) {
         </div>
       </div>
       <div className="card-full__link">
-        <p onClick={() => navTours(data.id)} className="link-sec">
+        <p onClick={() => navTours(data.id)} className="nav-link">
           Details
         </p>
         <Link to="/" className="link-sec">
