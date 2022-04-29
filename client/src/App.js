@@ -6,7 +6,6 @@ import { loadCurrentUser } from './redux/users/users.actions';
 import Spinner from './components/withSpinner.comp';
 import Nav from './components/nav.comp';
 import Overview from './pages/overview.pg';
-import Bookings from './pages/bookings.pg';
 import CurrentUser from './pages/user.pg';
 import Login from './pages/login.pg';
 import Signup from './pages/signup.pg';
@@ -14,6 +13,8 @@ import './App.css';
 import Google from './pages/google.pg';
 import Tour from './components/tour.comp';
 import LandingPG from './pages/landing.pg';
+import Search from './pages/search.pg';
+import SearchByName from './components/searchByName.comp';
 
 const OverviewWithSpinner = Spinner(Overview);
 
@@ -33,10 +34,12 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
           element={<OverviewWithSpinner isloading={isloading} cards={tours} />}
         />
         <Route path="/tour" element={<Tour />} />
-        <Route path="/bookings" element={<Bookings />} />
+        <Route path="/search" element={<Search />}>
+          <Route path="/search/by-name" element={<SearchByName />} />
+        </Route>
         <Route path="/me" element={<CurrentUser />} />
         <Route path="/login" element={<Login />}>
-          <Route path=":google" element={<Google />} />
+          <Route path="google" element={<Google />} />
         </Route>
         <Route path="/signup" element={<Signup />} />
       </Routes>

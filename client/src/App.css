@@ -1057,3 +1057,98 @@ html {
     display: flex;
     justify-content: center;
   }
+
+  .bdg {
+    width: 100%;
+    height: 65vh;
+    top: 170px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    isolation: isolate; 
+  }
+
+  .bdg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(60, 188, 129, 0.8);
+    mix-blend-mode: multiply; 
+  }
+
+  .search-content{
+    width: 92%;
+    height: 100%;
+    margin: 0 auto;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-nav {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 15px;
+    text-align: center;
+    color: #fff;
+  list-style: none;
+  display: flex;
+  width: 35%;
+  justify-content: space-between;
+  }
+
+  .search-form {
+    width: 40%;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+
+position: relative;
+  }
+
+  .seach-input,
+  .seach-input:focus-within {
+    border: none;
+    border-bottom: 2.5px solid white;
+    background-color: transparent;
+    outline: none;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 15px;
+    color: #fff;
+    margin-top: 4rem;
+    margin-right: 2rem;
+  }
+
+  
+  .seach-input:invalid {
+    border-bottom: 2.5px solid red;
+  }
+
+  .search-label {
+    position: absolute;
+    top: 82px;
+    left: 0px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 15px;
+    color: #fff;
+    display: none;
+  }
+  .seach-input:focus ~ .search-label {
+    display: block;
+    transition: display 1s ease-in-out;
+  }
