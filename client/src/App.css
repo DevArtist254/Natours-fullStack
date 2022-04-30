@@ -1152,3 +1152,14 @@ position: relative;
     display: block;
     transition: display 1s ease-in-out;
   }
+
+  .cards-searched {
+    width: 90%;
+position: absolute;
+left: 66px;
+top: 790px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+flex-wrap: wrap;
+  }

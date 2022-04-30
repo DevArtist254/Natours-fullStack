@@ -1,10 +1,10 @@
 import React from 'react';
 import Cards from '../components/cards.comp';
 
-function Overview({ cards, setTour }) {
+function Overview({ cards }) {
   return (
     <main>
-      <Cards cards={cards} setTour={setTour} />
+      <Cards className="cards" cards={cards} />
     </main>
   );
 }

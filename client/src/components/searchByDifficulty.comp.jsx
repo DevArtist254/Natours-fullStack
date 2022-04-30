@@ -2,42 +2,35 @@ import { connect } from 'react-redux';
 import { loadSearchItems } from './../redux/search/search.actions';
 import { useState } from 'react';
 
-const SearchByName = ({ loadSearchItems }) => {
+const SearchByDifficulty = ({ loadSearchItems }) => {
   const [query, setQuery] = useState({
-    tourName: '',
-    name: 'tourName',
+    difficult: '',
+    name: 'difficulty',
   });
 
   function handleSearch(e) {
-    const { name, value } = e.target;
-
-    setQuery((prevValue) => {
-      return {
-        ...prevValue,
-        [name]: value,
-      };
+    setQuery({
+      difficult: e.target.value,
+      name: 'difficulty',
     });
   }
 
   function onSubmit(e) {
     e.preventDefault();
 
-    const { tourName, name } = query;
+    const { difficult, name } = query;
 
-    loadSearchItems(tourName, name);
+    loadSearchItems(difficult, name);
   }
 
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your desired tour name"
-          className="seach-input"
-          name="tourName"
-          value={query.tourName}
-          onChange={handleSearch}
-        />
+        <select onChange={handleSearch}>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="difficult">Difficult</option>
+        </select>
         <label className="search-label">Enter your desired tour name</label>
         <input type="submit" className="sec-btn" />
       </form>
@@ -50,4 +43,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(loadSearchItems(tourName, name)),
 });
 
-export default connect(null, mapDispatchToProps)(SearchByName);
+export default connect(null, mapDispatchToProps)(SearchByDifficulty);

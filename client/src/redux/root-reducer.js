@@ -3,6 +3,7 @@ import tourReducer from './tour/tour.reducer';
 import toursReducer from './tours/tours.reducer';
 import authReducer from './auth/auth.reducer';
 import userReducer from './users/users.reducer';
+import searchReducer from './search/search.reducer';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   tour: tourReducer,
   auth: authReducer,
   user: userReducer,
+  search: searchReducer,
 });
 
 const persistedReducer = persistReducer(config, rootReducer);

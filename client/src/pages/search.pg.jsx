@@ -1,7 +1,9 @@
+import { connect } from 'react-redux';
+import Cards from '../components/cards.comp';
 import { Link, Outlet } from 'react-router-dom';
 import image from '../img/search-bdg.jpg';
 
-function Search() {
+function Search({ searchedItems }) {
   return (
     <div>
       <div className="bdg" style={{ backgroundImage: `url(${image})` }}>
@@ -13,20 +15,27 @@ function Search() {
             </li>
             <li>
               {' '}
-              <Link to="/search">Price</Link>{' '}
+              <Link to="/search/by-price">Price</Link>{' '}
             </li>
             <li>
-              <Link to="/search">Duration </Link>{' '}
+              <Link to="/search/by-duration">Duration </Link>{' '}
             </li>
             <li>
-              <Link to="/search">Difficulty </Link>
+              <Link to="/search/by-difficulty">Difficulty </Link>
             </li>
           </ul>
           <Outlet />
         </div>
+        <main>
+          <Cards className="cards-searched" cards={searchedItems} />
+        </main>
       </div>
     </div>
   );
 }
 
-export default Search;
+const mapStateToProps = ({ search }) => ({
+  searchedItems: search.searchedItems,
+});
+
+export default connect(mapStateToProps)(Search);

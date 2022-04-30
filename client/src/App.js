@@ -15,6 +15,9 @@ import Tour from './components/tour.comp';
 import LandingPG from './pages/landing.pg';
 import Search from './pages/search.pg';
 import SearchByName from './components/searchByName.comp';
+import SearchByDifficulty from './components/searchByDifficulty.comp';
+import SearchByDuration from './components/searchByDuration.comp';
+import SearchByPrice from './components/searchByPrice.comp';
 
 const OverviewWithSpinner = Spinner(Overview);
 
@@ -36,6 +39,12 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
         <Route path="/tour" element={<Tour />} />
         <Route path="/search" element={<Search />}>
           <Route path="/search/by-name" element={<SearchByName />} />
+          <Route
+            path="/search/by-difficulty"
+            element={<SearchByDifficulty />}
+          />
+          <Route path="/search/by-duration" element={<SearchByDuration />} />
+          <Route path="/search/by-price" element={<SearchByPrice />} />
         </Route>
         <Route path="/me" element={<CurrentUser />} />
         <Route path="/login" element={<Login />}>

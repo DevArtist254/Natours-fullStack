@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { loadSearchItems } from './../redux/search/search.actions';
 import { useState } from 'react';
 
-const SearchByName = ({ loadSearchItems }) => {
+const SearchByDuration = ({ loadSearchItems }) => {
   const [query, setQuery] = useState({
-    tourName: '',
-    name: 'tourName',
+    duration: '',
+    name: 'duration',
   });
 
   function handleSearch(e) {
@@ -22,20 +22,20 @@ const SearchByName = ({ loadSearchItems }) => {
   function onSubmit(e) {
     e.preventDefault();
 
-    const { tourName, name } = query;
+    const { duration, name } = query;
 
-    loadSearchItems(tourName, name);
+    loadSearchItems(duration, name);
   }
 
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
         <input
-          type="text"
-          placeholder="Enter your desired tour name"
+          type="Number"
+          placeholder="Enter your duration for your tour"
           className="seach-input"
-          name="tourName"
-          value={query.tourName}
+          name="duration"
+          value={query.duration}
           onChange={handleSearch}
         />
         <label className="search-label">Enter your desired tour name</label>
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(loadSearchItems(tourName, name)),
 });
 
-export default connect(null, mapDispatchToProps)(SearchByName);
+export default connect(null, mapDispatchToProps)(SearchByDuration);
