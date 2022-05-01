@@ -30,16 +30,19 @@ const SearchByName = ({ loadSearchItems }) => {
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your desired tour name"
-          className="seach-input"
-          name="tourName"
-          value={query.tourName}
-          onChange={handleSearch}
-        />
-        <label className="search-label">Enter your desired tour name</label>
-        <input type="submit" className="sec-btn" />
+        <h2 className="tour__intro--footerSubHeader">Find by name</h2>
+        <div className="search-input-form">
+          <input
+            type="text"
+            placeholder="Enter your desired tour name"
+            className="seach-input"
+            name="tourName"
+            value={query.tourName}
+            onChange={handleSearch}
+          />
+          <label className="search-label">Enter your desired tour name</label>
+          <input type="submit" className="tri-btn" />
+        </div>
       </form>
     </>
   );

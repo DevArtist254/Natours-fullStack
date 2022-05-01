@@ -26,13 +26,16 @@ const SearchByDifficulty = ({ loadSearchItems }) => {
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <select onChange={handleSearch}>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="difficult">Difficult</option>
-        </select>
-        <label className="search-label">Enter your desired tour name</label>
-        <input type="submit" className="sec-btn" />
+        <h2 className="tour__intro--footerSubHeader">Find by difficult</h2>
+        <div className="search-input-form">
+          <select onChange={handleSearch}>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="difficult">Difficult</option>
+          </select>
+          <label className="search-label">Enter your desired tour name</label>
+          <input type="submit" className="tri-btn" />
+        </div>
       </form>
     </>
   );

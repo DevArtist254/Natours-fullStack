@@ -5,7 +5,7 @@ import { useState } from 'react';
 const SearchByPrice = ({ loadSearchItems }) => {
   const [query, setQuery] = useState({
     price: '',
-    name: 'price',
+    name: 'priceGte',
   });
 
   function handleSearch(e) {
@@ -30,16 +30,19 @@ const SearchByPrice = ({ loadSearchItems }) => {
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <input
-          type="number"
-          placeholder="Enter your desired tour name"
-          className="seach-input"
-          name="price"
-          value={query.price}
-          onChange={handleSearch}
-        />
-        <label className="search-label">Enter your desired tour name</label>
-        <input type="submit" className="sec-btn" />
+        <h2 className="tour__intro--footerSubHeader">Find by Price</h2>
+        <div className="search-input-form">
+          <input
+            type="number"
+            placeholder="Enter your desired tour name"
+            className="seach-input"
+            name="price"
+            value={query.price}
+            onChange={handleSearch}
+          />
+          <label className="search-label">Enter your desired tour name</label>
+          <input type="submit" className="tri-btn" />
+        </div>
       </form>
     </>
   );

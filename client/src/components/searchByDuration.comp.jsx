@@ -5,7 +5,7 @@ import { useState } from 'react';
 const SearchByDuration = ({ loadSearchItems }) => {
   const [query, setQuery] = useState({
     duration: '',
-    name: 'duration',
+    name: 'durationGte',
   });
 
   function handleSearch(e) {
@@ -30,16 +30,19 @@ const SearchByDuration = ({ loadSearchItems }) => {
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <input
-          type="Number"
-          placeholder="Enter your duration for your tour"
-          className="seach-input"
-          name="duration"
-          value={query.duration}
-          onChange={handleSearch}
-        />
-        <label className="search-label">Enter your desired tour name</label>
-        <input type="submit" className="sec-btn" />
+        <h2 className="tour__intro--footerSubHeader">Find by duration</h2>
+        <div className="search-input-form">
+          <input
+            type="Number"
+            placeholder="Enter your duration for your tour"
+            className="seach-input"
+            name="duration"
+            value={query.duration}
+            onChange={handleSearch}
+          />
+          <label className="search-label">Enter your desired tour name</label>
+          <input type="submit" className="tri-btn" />
+        </div>
       </form>
     </>
   );

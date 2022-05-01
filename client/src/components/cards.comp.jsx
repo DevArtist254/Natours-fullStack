@@ -1,10 +1,10 @@
 import Card from './card.comp';
 
-function Cards({ cards, setTour }) {
+function Cards({ cards, cardSearched }) {
   return (
-    <div>
+    <div className={cardSearched ? 'cards-searched' : 'cards'}>
       {cards.map((cur) => (
-        <Card key={cur._id} data={cur} setTour={setTour} />
+        <Card key={cur._id} data={cur} />
       ))}
     </div>
   );
