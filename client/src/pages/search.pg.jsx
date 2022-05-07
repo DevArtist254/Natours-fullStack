@@ -2,9 +2,12 @@ import { connect } from 'react-redux';
 import Cards from '../components/cards.comp';
 import { Icon } from '@iconify/react';
 import { Link, Outlet } from 'react-router-dom';
+import Spinner from './../components/withSpinner.comp';
 import image from '../img/tours/tour-2-1.jpg';
 
-function Search({ searchedItems }) {
+const CardsWithSpinner = Spinner(Cards);
+
+function Search({ searchedItems, loading }) {
   const searchStyle = true;
   return (
     <div>
@@ -62,7 +65,11 @@ function Search({ searchedItems }) {
         >
           Search Results
         </h1>
-        <Cards cardSearched={searchStyle} cards={searchedItems} />
+        <CardsWithSpinner
+          isloading={loading}
+          cardSearched={searchStyle}
+          cards={searchedItems}
+        />
       </main>
     </div>
   );
@@ -70,6 +77,7 @@ function Search({ searchedItems }) {
 
 const mapStateToProps = ({ search }) => ({
   searchedItems: search.searchedItems,
+  loading: search.isLoading,
 });
 
 export default connect(mapStateToProps)(Search);

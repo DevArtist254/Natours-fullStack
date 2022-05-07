@@ -2,7 +2,7 @@ import searchCollectionTypes from './search.types';
 
 const initialState = {
   searchedItems: [],
-  isLoading: true,
+  isLoading: false,
   errMessage: undefined,
 };
 

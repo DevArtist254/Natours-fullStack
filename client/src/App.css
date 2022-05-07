@@ -578,7 +578,9 @@ html {
 
 .card-full {
   width: 23%;
-  height: 80vh; }
+  height: 80vh;
+  margin-left: 5rem;
+ }
   .card-full:hover {
     height: 75vh;
     /* property name | duration | easing function */
@@ -1167,7 +1169,6 @@ left: 66px;
 top: 170px;
 display: flex;
 flex-direction: row;
-justify-content: space-between;
 flex-wrap: wrap;
   }
 
