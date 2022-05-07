@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { loadTour } from './../redux/tour/tour.actions';
+import { addItemsToCart } from './../redux/cart/cart.actions';
 import { useNavigate } from 'react-router-dom';
 //import { useMemo } from 'react';
 //import { Icon } from '@iconify/react';
@@ -7,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Stars from './star.comp';
 
-function Card({ data, loadTour }) {
+function Card({ data, loadTour, addItemsToCart }) {
   const navigate = useNavigate();
 
   const navTours = (id) => {
@@ -37,6 +38,9 @@ function Card({ data, loadTour }) {
           <div className="stars">
             <Stars rateAv={data.ratingsAverage} />
           </div>
+          <button onClick={() => addItemsToCart(data)}>
+            Add to cart {data.price}
+          </button>
         </div>
       </div>
       <div className="card-full__link">
@@ -53,6 +57,7 @@ function Card({ data, loadTour }) {
 
 const mapDispatchToProps = (dispatch) => ({
   loadTour: (id) => dispatch(loadTour(id)),
+  addItemsToCart: (item) => dispatch(addItemsToCart(item)),
 });
 
 export default connect(null, mapDispatchToProps)(Card);
