@@ -191,7 +191,7 @@ html {
   justify-content: space-between;
   z-index: 1000; }
   .nav__list {
-    width: 30%;
+    width: 35%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -219,15 +219,15 @@ html {
   display: none; }
 
 .triangle {
-  left: 185px; }
+  left: 225px; }
 
 .triangle-1 {
   top: 34px;
-  left: 251px;}
+  left: 497px;}
 
 .triangle-2 {
   top: 37px;
-  left: 327px;}
+  left: 384px;}
 
 .dropdown {
   position: absolute;
@@ -933,12 +933,14 @@ html {
 .tranparent-Background {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) !important; }
 
-.logo {
+.logo:link,
+.logo:visited {
   font-family: "Dancing Script", cursive;
   font-style: normal;
   font-weight: 700;
   font-size: 4.5rem;
-  color: #000000; }
+  color: #000000;
+text-decoration: none; }
 
   .tour__booked--image {
     width: 150px;
@@ -1188,4 +1190,12 @@ top: 840px;
   .a {
     text-decoration: none;
     ;
+  }
+
+  .nav__header {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #000000; 
   }
