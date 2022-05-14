@@ -56,7 +56,9 @@ html {
   font-size: 2.4rem;
   line-height: 60px;
   text-decoration: none;
-  color: #000000; }
+  color: #000000;
+  cursor: pointer;
+ }
 
 .nav-link {
   font-family: "Poppins", sans-serif;
@@ -66,6 +68,7 @@ html {
   line-height: 60px;
   text-decoration: none;
   color: #000000; 
+  cursor: pointer;
 }
 
 .pri-btn,
@@ -207,6 +210,14 @@ html {
       .nav__search--input:focus {
         outline: none; }
 
+  .nav__header--count {
+    position: absolute;
+bottom: 2px;
+right: 12px;
+color: white;
+font-size: 18px;
+  }
+
 .top {
   top: 23px; }
 
@@ -227,7 +238,7 @@ html {
 
 .triangle-2 {
   top: 37px;
-  left: 384px;}
+  left: 400px;}
 
 .dropdown {
   position: absolute;
@@ -247,7 +258,8 @@ html {
     font-weight: 400;
     font-size: 40px;
     text-align: center;
-    color: #ffffff; }
+    color: #ffffff;
+  margin: 2rem 0; }
     .dropdown__header--sub {
       font-family: "Poppins";
       font-style: normal;
@@ -340,23 +352,72 @@ html {
     text-align: center;
     color: #ffffff; }
   .dropdown__tours {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    margin: 0 auto; }
+    margin: 0 auto; 
+    margin-bottom: 2rem;
+  }
     .dropdown__tours--header, .dropdown__tours--total {
       font-family: "Poppins";
       font-style: normal;
       font-weight: 400;
-      font-size: 25px;
-      line-height: 38px;
+      font-size: 18px;
       /* identical to box height */
       color: #ffffff; }
+
+      .dropdown__tours--header {
+        text-align: end;
+        margin-bottom: 10px;
+        font-weight: bolder;
+      }
+
     .dropdown__tours--cancel {
       width: 22px;
-      height: 24px; }
+      height: 24px;
+    position: absolute;
+  bottom: 0;
+left: 0;
+z-index: 1; }
+
+.dropdown__tours--placeHolder {
+  display: block;
+  height: 154px;
+  width: 150px;
+  background-color: transparent;
+}
+
+.dropdown__tours--img {
+  display: block;
+  height: 154px;
+  width: 104px;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+}
+
+.dropdown__tours:hover 
+.dropdown__tours--img {
+  width: 210px;
+  transition: all 1000ms ease-in-out;
+}
+
+.dropdown__tours--content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  z-index: 1;
+  }
 
 .btn-plus {
   padding: 10px 8px;
@@ -565,7 +626,6 @@ html {
   top: 170px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap; }
 
 .card {
@@ -579,7 +639,7 @@ html {
 .card-full {
   width: 23%;
   height: 80vh;
-  margin-left: 5rem;
+  margin-right: 3rem;
  }
   .card-full:hover {
     height: 75vh;
@@ -604,11 +664,13 @@ html {
   .card-full__picture--sub-header {
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center; 
+    margin-bottom: 2rem;
+  }
 
 .card__subHeader,
 .card-full__subHeader {
-  visibility: visible; }
+  display: inline-block; }
 
 .card__link,
 .card-full__link {
@@ -645,7 +707,7 @@ html {
 .card-full__subHeader,
 .card-full:hover
 .card-full__subHeader {
-  visibility: hidden;
+  display: none;
   /* property name | duration | easing function */ }
 
 .video {
@@ -929,6 +991,41 @@ html {
   line-height: 30px;
   text-align: center;
   color: #fff; }
+
+  .card-price {
+    font-family: "Poppins";
+    font-style: thin;
+    font-weight: 200;
+    font-size: 27px;
+    margin-bottom: 1rem;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    display: none; 
+  }
+
+  .card:hover .card-price,
+.card-full:hover .card-price {
+  display: inline-block; 
+}
+
+    .card-addToCart-btn {
+      font-family: "Poppins";
+      font-style: thin;
+      font-weight: 300;
+      line-height: 30px;
+      text-align: center;
+      font-size: 34px;
+      color: white;
+      text-decoration: underline;
+      display: none;
+      cursor: pointer;
+     }
+
+     .card:hover  .card-addToCart-btn,
+.card-full:hover  .card-addToCart-btn{
+  display: inline-block; 
+}
 
 .tranparent-Background {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) !important; }

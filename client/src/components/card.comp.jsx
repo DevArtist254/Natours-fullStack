@@ -34,13 +34,17 @@ function Card({ data, loadTour, addItemsToCart }) {
           {data.name}
         </h3>
         <div className="card-full__picture--sub-header">
+          <p className="card-price"> Only ${data.price}</p>
           <h4 className="card-full__subHeader card-subHeader">{data.name}</h4>
           <div className="stars">
             <Stars rateAv={data.ratingsAverage} />
           </div>
-          <button onClick={() => addItemsToCart(data)}>
-            Add to cart {data.price}
-          </button>
+          <p
+            className="card-addToCart-btn"
+            onClick={() => addItemsToCart(data)}
+          >
+            Add to cart
+          </p>
         </div>
       </div>
       <div className="card-full__link">

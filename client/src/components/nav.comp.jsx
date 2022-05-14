@@ -2,12 +2,17 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
+import {
+  selectCartItemCount,
+  selectCartItem,
+} from './../redux/cart/cart.selector';
 import triangle from './../img/triangle.svg';
 import wishlist from './../img/wishlist.svg';
 import x from './../img/x.png';
 import UpLoadImg from './upLoadImg';
+import tourImg from './../img/tours/tour-1-2.jpg';
 
-function Nav({ currentUser }) {
+function Nav({ currentUser, itemCartCount, cartItems }) {
   const navRoute = useNavigate();
 
   return (
@@ -56,8 +61,9 @@ function Nav({ currentUser }) {
           </div>
         </li>
         <li className="nav__items">
-          <span className="nav__search">
-            <h2 className="nav__header">Bookings</h2>
+          <span className="nav__search" style={{ position: 'relative' }}>
+            <h2 className="nav__header">Bookings </h2>
+            <p className="nav__header--count">{itemCartCount}</p>
             <a href="/nav.html" className="nav__link">
               <Icon
                 className="iconify"
@@ -68,22 +74,26 @@ function Nav({ currentUser }) {
           </span>
           <img src={triangle} alt="tri" className="triangle-2" />
           <div className="dropdown">
-            <h2 className="dropdown__header">Tours</h2>
-            <div className="dropdown__tours">
-              <h4 className="dropdown__tours--header">Tour</h4>
-              <p className="dropdown__tours--total">$200</p>
-              <img src={x} alt="cancel" className="dropdown__tours--cancel" />
-            </div>
-            <div className="dropdown__tours">
-              <h4 className="dropdown__tours--header">Tour</h4>
-              <p className="dropdown__tours--total">$200</p>
-              <img src={x} alt="cancel" className="dropdown__tours--cancel" />
-            </div>
-            <div className="dropdown__tours">
-              <h4 className="dropdown__tours--header">Tour</h4>
-              <p className="dropdown__tours--total">$200</p>
-              <img src={x} alt="cancel" className="dropdown__tours--cancel" />
-            </div>
+            <h2 className="dropdown__header">Adventures</h2>
+            {cartItems.map((cartItem) => (
+              <div className="dropdown__tours">
+                <div className="dropdown__tours--placeHolder "></div>
+                <div
+                  style={{
+                    backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${cartItem.imageCover})`,
+                  }}
+                  className="dropdown__tours--img"
+                ></div>
+                <div className="dropdown__tours--content">
+                  <h4 className="dropdown__tours--header">{cartItem.name}</h4>
+                  <p className="dropdown__tours--total">
+                    Quantity {cartItem.quantity}
+                  </p>
+                  <p className="dropdown__tours--total">$ {cartItem.price}</p>
+                </div>
+                <img src={x} alt="cancel" className="dropdown__tours--cancel" />
+              </div>
+            ))}
 
             <p className="dropdown__p">Total : Total amount</p>
             <div className="dropdown__cta">Pay</div>
@@ -156,8 +166,10 @@ function Nav({ currentUser }) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+  itemCartCount: selectCartItemCount(state),
+  cartItems: selectCartItem(state),
 });
 
 export default connect(mapStateToProps)(Nav);
