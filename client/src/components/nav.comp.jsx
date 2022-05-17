@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { setTour } from './../redux/tour/tour.actions';
 import {
   selectCartItemCount,
+  selectCartItemSum,
   selectCartItem,
 } from './../redux/cart/cart.selector';
 import triangle from './../img/triangle.svg';
@@ -13,7 +14,7 @@ import x from './../img/x.png';
 import UpLoadImg from './upLoadImg';
 import tourImg from './../img/tours/tour-1-2.jpg';
 
-function Nav({ currentUser, itemCartCount, cartItems, setTour }) {
+function Nav({ currentUser, itemCartCount, cartItems, setTour, cartItemsSum }) {
   const navRoute = useNavigate();
 
   const navTours = (cartItem) => {
@@ -105,7 +106,7 @@ function Nav({ currentUser, itemCartCount, cartItems, setTour }) {
               </div>
             ))}
 
-            <p className="dropdown__p">Total : Total amount</p>
+            <p className="dropdown__p">Total : $ {cartItemsSum}</p>
             <div
               className="dropdown__cta"
               onClick={() => navRoute('/checkout')}
@@ -185,6 +186,7 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
   itemCartCount: selectCartItemCount(state),
   cartItems: selectCartItem(state),
+  cartItemsSum: selectCartItemSum(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
