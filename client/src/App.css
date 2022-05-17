@@ -336,6 +336,7 @@ font-size: 18px;
     color: #000000;
     padding: 1.2rem 0.7rem;
     margin: 0 auto;
+    cursor: pointer;
     }
 
     .mt2 {
@@ -360,6 +361,7 @@ font-size: 18px;
     width: 90%;
     margin: 0 auto; 
     margin-bottom: 2rem;
+    cursor: pointer;
   }
     .dropdown__tours--header, .dropdown__tours--total {
       font-family: "Poppins";
@@ -1162,7 +1164,7 @@ text-decoration: none; }
 
   .bdg {
     width: 90%;
-    height: 72vh;
+    height: 51vh;
     top: 170px;
     left: 66px;
     position: absolute;
@@ -1219,7 +1221,7 @@ text-decoration: none; }
     align-items: flex-end;
     justify-content: flex-end;
     position: absolute;
-    top: 668px;
+    top: 474px;
     left: 66px;
   }
 
@@ -1281,7 +1283,7 @@ color: #fff;
   .search-results {
     width: 90%;
 position: absolute;
-top: 840px;
+top: 648px;
   }
 
   .a {
@@ -1296,3 +1298,36 @@ top: 840px;
     font-size: 1.8rem;
     color: #000000; 
   }
+
+.checkout-main {
+  width: 92%;
+margin: 0 auto;
+top: 175px;
+position: relative;
+}
+
+.checkout-main__header  {
+  text-align: center;
+  margin-bottom: 2rem;
+ }
+
+ .checkout-main__tour {
+    display: flex;
+width: 100%;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-end;
+  }
+
+.checkout-main__tour--img {
+  width: 50%;
+height: 658px;
+background-size: cover;
+background-position: center;
+}
+
+.checkout-main__content {
+  display: flex;
+flex-direction: column;
+align-items: flex-end;
+}

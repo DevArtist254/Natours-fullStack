@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadTour } from './../redux/tour/tour.actions';
+import { setTour } from './../redux/tour/tour.actions';
 import { addItemsToCart } from './../redux/cart/cart.actions';
 import { useNavigate } from 'react-router-dom';
 //import { useMemo } from 'react';
@@ -8,11 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Stars from './star.comp';
 
-function Card({ data, loadTour, addItemsToCart }) {
+function Card({ data, setTour, addItemsToCart }) {
   const navigate = useNavigate();
 
-  const navTours = (id) => {
-    loadTour(id);
+  const navTours = (data) => {
+    setTour(data);
 
     navigate('/tour');
   };
@@ -48,7 +48,7 @@ function Card({ data, loadTour, addItemsToCart }) {
         </div>
       </div>
       <div className="card-full__link">
-        <p onClick={() => navTours(data.id)} className="nav-link">
+        <p onClick={() => navTours(data)} className="nav-link">
           Details
         </p>
         <Link to="/" className="link-sec">
@@ -60,7 +60,7 @@ function Card({ data, loadTour, addItemsToCart }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  loadTour: (id) => dispatch(loadTour(id)),
+  setTour: (id) => dispatch(setTour(id)),
   addItemsToCart: (item) => dispatch(addItemsToCart(item)),
 });
 

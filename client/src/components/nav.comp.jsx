@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
+import { setTour } from './../redux/tour/tour.actions';
 import {
   selectCartItemCount,
   selectCartItem,
@@ -12,8 +13,14 @@ import x from './../img/x.png';
 import UpLoadImg from './upLoadImg';
 import tourImg from './../img/tours/tour-1-2.jpg';
 
-function Nav({ currentUser, itemCartCount, cartItems }) {
+function Nav({ currentUser, itemCartCount, cartItems, setTour }) {
   const navRoute = useNavigate();
+
+  const navTours = (cartItem) => {
+    setTour(cartItem);
+
+    navRoute('/tour');
+  };
 
   return (
     <div className="nav">
@@ -76,7 +83,10 @@ function Nav({ currentUser, itemCartCount, cartItems }) {
           <div className="dropdown">
             <h2 className="dropdown__header">Adventures</h2>
             {cartItems.map((cartItem) => (
-              <div className="dropdown__tours">
+              <div
+                className="dropdown__tours"
+                onClick={() => navTours(cartItem)}
+              >
                 <div className="dropdown__tours--placeHolder "></div>
                 <div
                   style={{
@@ -87,7 +97,7 @@ function Nav({ currentUser, itemCartCount, cartItems }) {
                 <div className="dropdown__tours--content">
                   <h4 className="dropdown__tours--header">{cartItem.name}</h4>
                   <p className="dropdown__tours--total">
-                    Quantity {cartItem.quantity}
+                    Tickets {cartItem.quantity}
                   </p>
                   <p className="dropdown__tours--total">$ {cartItem.price}</p>
                 </div>
@@ -96,7 +106,12 @@ function Nav({ currentUser, itemCartCount, cartItems }) {
             ))}
 
             <p className="dropdown__p">Total : Total amount</p>
-            <div className="dropdown__cta">Pay</div>
+            <div
+              className="dropdown__cta"
+              onClick={() => navRoute('/checkout')}
+            >
+              Pay
+            </div>
           </div>
         </li>
         <li className="nav__items">
@@ -172,4 +187,8 @@ const mapStateToProps = (state) => ({
   cartItems: selectCartItem(state),
 });
 
-export default connect(mapStateToProps)(Nav);
+const mapDispatchToProps = (dispatch) => ({
+  setTour: (cartItem) => dispatch(setTour(cartItem)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

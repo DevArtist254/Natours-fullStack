@@ -18,6 +18,7 @@ import SearchByName from './components/searchByName.comp';
 import SearchByDifficulty from './components/searchByDifficulty.comp';
 import SearchByDuration from './components/searchByDuration.comp';
 import SearchByPrice from './components/searchByPrice.comp';
+import CheckOut from './pages/checkout.pg';
 
 const OverviewWithSpinner = Spinner(Overview);
 
@@ -51,6 +52,7 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
           <Route path="google" element={<Google />} />
         </Route>
         <Route path="/signup" element={<Signup />} />
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </div>
   );
