@@ -35,7 +35,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   //filter out un wanted data
-  const allowedData = filterObj(req.body, 'name', 'email');
+  const allowedData = filterObj(req.body, 'fullName', 'email');
 
   console.log(allowedData);
   //update user data

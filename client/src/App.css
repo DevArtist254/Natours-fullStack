@@ -1299,16 +1299,26 @@ top: 648px;
     color: #000000; 
   }
 
-.checkout-main {
+.checkout {
   width: 92%;
-margin: 0 auto;
-top: 175px;
-position: relative;
+  margin: 0 auto;
+  top: 175px;
+  position: relative;
+}
+
+.checkout-main {
+  width: 100%;
+  display: flex;
 }
 
 .checkout-main__header  {
   text-align: center;
   margin-bottom: 2rem;
+  font-family: "Dancing Script";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 9rem;
+      color: #000000;
  }
 
  .checkout-main__tour {
@@ -1317,17 +1327,125 @@ width: 100%;
 flex-direction: row;
 justify-content: space-between;
 align-items: flex-end;
+margin-bottom: 2rem;
+position: relative;
   }
 
 .checkout-main__tour--img {
-  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
 height: 658px;
 background-size: cover;
 background-position: center;
+border-radius: 1rem;
+z-index: -1;
+}
+
+.checkout-main__tour:hover 
+.checkout-main__tour--img {
+  width: 100%;
+  transition: all 1000ms ease-in-out;
+}
+
+.checkout-main__tour--content {
+  display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding-bottom: 2rem;
+padding-right: 2rem;
+font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #000000; 
+}
+
+.checkout-main__tour:hover 
+.checkout-main__tour--content {
+  color: #fff; 
+  transition: all 1000ms ease-in-out;
+}
+
+.checkout-main__tour--subHeader {
+  font-size: 4.5rem;
+}
+
+.checkout-main__tour--text {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.checkout-main__tour--space {
+  width: 45%;
+height: 658px;
+}
+
+.checkout-content {
+  width: 100%;
 }
 
 .checkout-main__content {
   display: flex;
 flex-direction: column;
 align-items: flex-end;
+}
+
+.checkout-payment {
+  position: sticky;
+  top: 0;
+  width: 30%;
+  display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding-right: 4rem;
+}
+
+.checkout-payment__header {
+  font-family: "Dancing Script";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 6rem;
+      color: #000000;
+  margin-bottom: 1rem;
+}
+
+.checkout-payment__text,
+.checkout-payment__btn {
+  font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 3rem;
+    color: #000000; 
+}
+
+.checkout-payment__btn {
+  width: 23.3rem;
+  height: 7rem;
+  background-color: #3cbc81;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.user-main {
+  margin: 0 auto;
+  width: 92%;
+  position: relative;
+  top: 202px;
+  display: flex;
+justify-content: space-between;
+}
+
+.user-main__nav{
+  width: 10%;
+display: flex;
+flex-direction: column;
+}
+
+.user-nav__content {
+  width: 85%;
 }

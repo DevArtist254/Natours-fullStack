@@ -19,6 +19,11 @@ import SearchByDifficulty from './components/searchByDifficulty.comp';
 import SearchByDuration from './components/searchByDuration.comp';
 import SearchByPrice from './components/searchByPrice.comp';
 import CheckOut from './pages/checkout.pg';
+import Purchases from './components/userDashboard/purchases.comp';
+import Alert from './components/userDashboard/alerts.comp';
+import Profile from './components/userDashboard/profile.comp';
+import Studio from './components/userDashboard/studio.comp';
+import Reviews from './components/userDashboard/reveiws.comp';
 
 const OverviewWithSpinner = Spinner(Overview);
 
@@ -47,7 +52,13 @@ function App({ isloading, tours, loadItems, loadCurrentUser, token }) {
           <Route path="/search/by-duration" element={<SearchByDuration />} />
           <Route path="/search/by-price" element={<SearchByPrice />} />
         </Route>
-        <Route path="/me" element={<CurrentUser />} />
+        <Route path="/me" element={<CurrentUser />}>
+          <Route path="/me/purchases" element={<Purchases />} />
+          <Route path="/me/studio" element={<Studio />} />
+          <Route path="/me/alerts" element={<Alert />} />
+          <Route path="/me/profile" element={<Profile />} />
+          <Route path="/me/reveiws" element={<Reviews />} />
+        </Route>
         <Route path="/login" element={<Login />}>
           <Route path="google" element={<Google />} />
         </Route>

@@ -8,6 +8,7 @@ import {
   selectCartItemSum,
   selectCartItem,
 } from './../redux/cart/cart.selector';
+import { selectCurrentUser } from './../redux/users/user.selector';
 import triangle from './../img/triangle.svg';
 import wishlist from './../img/wishlist.svg';
 import x from './../img/x.png';
@@ -183,7 +184,7 @@ function Nav({ currentUser, itemCartCount, cartItems, setTour, cartItemsSum }) {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+  currentUser: selectCurrentUser(state),
   itemCartCount: selectCartItemCount(state),
   cartItems: selectCartItem(state),
   cartItemsSum: selectCartItemSum(state),
