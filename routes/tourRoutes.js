@@ -10,6 +10,7 @@ const {
   getHolidayStats,
   getToursWithin,
   getDistances,
+  createdByLeadGuide,
 } = require('../controller/tourController');
 const reviewsRoute = require('./reviewRoutes');
 const { protect, restrictTo } = require('./../controller/authController');
@@ -31,6 +32,12 @@ router.get('/get-tour-five-tours', getTourFiveTours, getAllTours);
 router.get('/get-holiday-stats', getHolidayStats);
 //Chaining middleware
 router.post('/', protect, restrictTo('lead-guide'), createATour);
+router.post(
+  '/createdByLeadGuide',
+  protect,
+  restrictTo('lead-guide'),
+  createdByLeadGuide
+);
 router.get('/:id', getATour);
 router.patch('/:id', protect, findAndUpdate);
 router.delete('/:id', protect, restrictTo('admin'), findAndDelete);

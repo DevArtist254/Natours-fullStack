@@ -55,16 +55,13 @@ function Search({ searchedItems, loading }) {
               </Link>
             </li>
           </ul>
+          <Outlet />
         </div>
       </div>
-      <Outlet />
+      <h1 className="tour__intro--footerHeader search__footer ">
+        Search Results
+      </h1>
       <main className="search-results">
-        <h1
-          className="tour__intro--footerHeader"
-          style={{ textAlign: 'center' }}
-        >
-          Search Results
-        </h1>
         <CardsWithSpinner
           isloading={loading}
           cardSearched={searchStyle}

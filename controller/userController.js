@@ -10,7 +10,7 @@ exports.getMe = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllUsers = factory.getAll(User);
-exports.getAUser = factory.getOne(User);
+exports.getAUser = factory.getOne(User, { path: 'tours' });
 exports.deleteAdmin = factory.deleteOne(User);
 
 const filterObj = (obj, ...allowedFields) => {

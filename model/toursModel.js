@@ -49,17 +49,15 @@ const tourSchema = mongoose.Schema(
     price: {
       type: Number,
       require: true,
-      validate: {
-        validator: function (val) {
-          //should return true or false only work with new documents
-          return val > this.price;
-        },
-        message: 'the price ({VALUE}) should be above 100',
-      },
     },
     createdAt: {
       type: Date,
       default: Date.now(),
+    },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: [true, 'Must have a user'],
     },
     startDates: [Date],
     startLocation: {
@@ -85,13 +83,6 @@ const tourSchema = mongoose.Schema(
         description: String,
         images: [String],
         day: Number,
-      },
-    ],
-    guides: [
-      {
-        //1st create a ref of the other model
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
       },
     ],
   },

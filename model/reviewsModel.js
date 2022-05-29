@@ -27,11 +27,6 @@ const reviewSchema = mongoose.Schema(
       ref: 'User',
       required: [true, 'Must have a user'],
     },
-    profileImage: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-      required: [true, 'Must have a user'],
-    },
   },
   {
     toJSON: { virtuals: true },
@@ -46,10 +41,6 @@ reviewSchema.pre(/^find/, function (next) {
     //start by 1st ref with ObjectId then populate *less performance on id
     path: 'createdBy',
     select: 'fullName',
-  }).populate({
-    //start by 1st ref with ObjectId then populate *less performance on id
-    path: 'profileImage',
-    select: 'photo',
   });
   //   .populate({
   //     //start by 1st ref with ObjectId then populate *less performance on id
