@@ -1,0 +1,32 @@
+//async function getGeoLocation() {
+  //   //const location = 'Nakuru';
+
+  //   try {
+  //     const response = await axios.get(
+  //       'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBDvqGaFIdywqZcIabp4SihpaA6LfHWrJ8'
+  //     );
+
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // try {
+    //   const response = await axios.post(
+    //     'http://localhost:2540/natours/v1/tours',
+    //     tour,
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+
+    //   console.log(response);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    // console.log(tour);

@@ -14,16 +14,16 @@ import Google from './pages/google.pg';
 import Tour from './components/tour.comp';
 import LandingPG from './pages/landing.pg';
 import Search from './pages/search.pg';
-import SearchByName from './components/searchByName.comp';
-import SearchByDifficulty from './components/searchByDifficulty.comp';
-import SearchByDuration from './components/searchByDuration.comp';
-import SearchByPrice from './components/searchByPrice.comp';
+import SearchByName from './pages/searchPages/searchByPrice.pg';
+import SearchByDifficulty from './pages/searchPages/searchByPrice.pg';
+import SearchByDuration from './pages/searchPages/searchByPrice.pg';
+import SearchByPrice from './pages/searchPages/searchByPrice.pg';
 import CheckOut from './pages/checkout.pg';
-import Purchases from './components/userDashboard/purchases.comp';
-import Alert from './components/userDashboard/alerts.comp';
-import Profile from './components/userDashboard/profile.comp';
-import Studio from './components/userDashboard/studio.comp';
-import Reviews from './components/userDashboard/reveiws.comp';
+import Purchases from './pages/userDashboard/purchases.pg';
+import Alert from './pages/userDashboard/alerts.pg';
+import Profile from './pages/userDashboard/profile.pg';
+import Studio from './pages/userDashboard/studio.pg';
+import Reviews from './pages/userDashboard/reveiws.pg';
 
 const OverviewWithSpinner = Spinner(Overview);
 

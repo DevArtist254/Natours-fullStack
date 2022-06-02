@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import axios from 'axios';
 import { selectCurrentUser } from './../../redux/users/user.selector';
-import UpLoadImg from '../upLoadImg';
+import UpLoadImg from './../../components/upLoadImg';
 
 const Profile = ({ currentUser, token }) => {
   const [name, setName] = useState({

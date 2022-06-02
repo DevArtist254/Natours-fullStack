@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadSearchItems } from './../redux/search/search.actions';
+import { loadSearchItems } from './../../redux/search/search.actions';
 import { useState } from 'react';
 
 const SearchByDifficulty = ({ loadSearchItems }) => {

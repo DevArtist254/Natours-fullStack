@@ -5,6 +5,7 @@ import authReducer from './auth/auth.reducer';
 import userReducer from './users/users.reducer';
 import searchReducer from './search/search.reducer';
 import cartReducer from './cart/cart.reducer';
+import studioReducer from './studio/studio.reducer';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   search: searchReducer,
   cart: cartReducer,
+  studio: studioReducer,
 });
 
 const persistedReducer = persistReducer(config, rootReducer);

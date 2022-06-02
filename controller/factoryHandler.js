@@ -51,7 +51,6 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model, popOpt) =>
   catchAsync(async (req, res, next) => {
-    console.log(popOpt);
     const doc = await Model.findById(req.params.id, (err) => {
       console.log(err);
     }).populate(popOpt);
