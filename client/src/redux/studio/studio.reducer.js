@@ -13,7 +13,7 @@ const studioReducer = (state = initialState, { type, payload }) => {
     case studioCollectionTypes.SET_START_LOCATION:
       return { ...state, startLocation: payload };
     case studioCollectionTypes.SET_LOCATION:
-      return { ...state, locations: state.locations.push(payload) };
+      return { ...state, locations: [...state.locations, payload] };
     default:
       return state;
   }

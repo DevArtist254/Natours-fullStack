@@ -38,7 +38,7 @@ function Description({ setDescription }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setDescription(tour);
+    setDescription({ ...tour, startDate: date });
   }
 
   return (

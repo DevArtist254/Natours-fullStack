@@ -6,11 +6,11 @@ export const setDescription = (description) => ({
 });
 
 export const setStartLocation = (location) => ({
-  type: studioCollectionTypes.SET_TOUR_DECRIPTION,
+  type: studioCollectionTypes.SET_START_LOCATION,
   payload: location,
 });
 
 export const setLocation = (location) => ({
-  type: studioCollectionTypes.SET_TOUR_DECRIPTION,
+  type: studioCollectionTypes.SET_LOCATION,
   payload: location,
 });
